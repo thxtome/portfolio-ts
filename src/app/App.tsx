@@ -1,46 +1,33 @@
-//asset
-import NanumSquareBTtf from "./asset/fonts/NanumSquareB.ttf";
-import NanumSquareBWoff from "./asset/fonts/NanumSquareB.woff";
+//lib
+import { RecoilRoot } from 'recoil';
+import { ThemeProvider } from 'styled-components';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
-import NanumSquareEBTtf from "./asset/fonts/NanumSquareEB.ttf";
-import NanumSquareEBWoff from "./asset/fonts/NanumSquareEB.woff";
+//style
+import GlobalStyle from '@common/style/globalStyle';
+import theme from '@common/style/theme';
 
-import NanumSquareRTtf from "./asset/fonts/NanumSquareR.ttf";
-import NanumSquareRWoff from "./asset/fonts/NanumSquareR.woff";
+//component
+import Desktop from '@common/component/Desktop';
 
-const style = document.createElement("style");
-style.textContent = `
-@font-face {
-  font-family: NanumSquare;
-  font-weight: 800;
-  src: url("${NanumSquareEBWoff}") format("woff"), 
-       url("${NanumSquareEBTtf}") format("truetype");
-  letter-spacing: -0.22px;
-}
-
-@font-face {
-  font-family: NanumSquare;
-  font-weight: 600;
-  src: url("${NanumSquareBWoff}") format("woff"),
-       url("${NanumSquareBTtf}") format("truetype");
-  letter-spacing: -0.22px;
-}
-
-@font-face {
-  font-family: NanumSquare;
-  font-weight: 400;
-  src: url("${NanumSquareRWoff}") format("woff"), 
-       url("${NanumSquareRTtf}") format("truetype");
-  letter-spacing: -0.25px;
-}`;
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p style={{ fontFamily: "NanumSquare" }}>Jpark의 Portfolio</p>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <QueryClientProvider client={queryClient}>
+        <RecoilRoot>
+          <GlobalStyle />
+          <Desktop />
+        </RecoilRoot>
+      </QueryClientProvider>
+    </ThemeProvider>
   );
 }
 

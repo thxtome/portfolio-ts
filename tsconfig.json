@@ -18,11 +18,11 @@
     "baseUrl": "src",
     "paths": {
       "@src/*": ["*"],
-      "@app/*": ["app/*"],
+      "@asset/*": ["asset/project/*"],
       "@common/*": ["app/common/*"],
-      "@guestbook/*": ["app/guestbook/*"],
-      "@profile/*": ["app/profile/*"],
-      "@project/*": ["app/project/*"]
+      "@note/*": ["app/note/*"],
+      "@profile/*": ["app//profile/*"],
+      "@project/*": ["app//project/*"]
     }
   },
   "include": ["src"]
