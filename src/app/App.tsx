@@ -8,7 +8,7 @@ import GlobalStyle from '@common/style/globalStyle';
 import theme from '@common/style/theme';
 
 //component
-import Desktop from '@common/component/Desktop';
+import Desktop from '@src/app/common/pages/Desktop';
 
 const queryClient = new QueryClient({
   defaultOptions: {

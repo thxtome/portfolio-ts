@@ -1,106 +1,100 @@
-import ColorTheme from '@common/type/ColorTheme';
 import { DefaultTheme } from 'styled-components';
 
-export const colors = {
-  accent: {
-    yellow: '#FFE24D' as ColorTheme,
-    purple: { '500': '#5D5FEF' as ColorTheme, '300': '#A5A6F6' as ColorTheme, '100': '#EDEDFD' as ColorTheme },
-    blue: { '500': '#0E6FFF' as ColorTheme, '300': '#64A3FF' as ColorTheme, '100': '#E7F1FF' as ColorTheme },
-  },
-  white: '#ffffff' as ColorTheme,
-  black: '#031E13' as ColorTheme,
-  grey: {
-    '900': '#585858' as ColorTheme,
-    '700': '#A5A5A5' as ColorTheme,
-    '600': '#D2D2D2' as ColorTheme,
-    '300': '#E5E5E5' as ColorTheme,
-    '200': '#F3F3F3' as ColorTheme,
-    '100': '#F9F9F9' as ColorTheme,
-  },
-  states: {
-    alert: '#F3C846' as ColorTheme,
-    error: '#E25443' as ColorTheme,
-    info: '#559BE5' as ColorTheme,
-    success: '#5CC73E' as ColorTheme,
-  },
+const colors = {
+  white: '#ffffff',
+  black: '#031E13',
+  'grey-900': '#585858',
+  'grey-700': '#A5A5A5',
+  'grey-600': '#D2D2D2',
+  'grey-300': '#E5E5E5',
+  'grey-200': '#F3F3F3',
+  'grey-100': '#F9F9F9',
+  'purple-500': '#5D5FEF',
+  'purple-300': '#A5A6F6',
+  'purple-100': '#EDEDFD',
+  'blue-500': '#0E6FFF',
+  'blue-300': '#64A3FF',
+  'blue-100': '#E7F1FF',
+  'state-alert': 'F3C846',
+  'state-error': 'E25443',
+  'state-info': '559BE5',
+  'state-success': '5CC73E',
 };
 
-export const typographys = {
+export type ColorVariants = keyof typeof colors;
+
+const typographys = {
   display2: {
-    fontSize: 32,
-    lineHeight: 40,
+    fontSize: 28,
+    lineHeight: 1.285,
     fontWeight: 700,
   },
   display3: {
-    fontSize: 28,
-    lineHeight: 26,
+    fontSize: 26,
+    lineHeight: 1.307,
     fontWeight: 700,
   },
   title1: {
-    fontSize: 24,
-    lineHeight: 32,
+    fontSize: 20,
+    lineHeight: 1.3,
     fontWeight: 700,
   },
   title2: {
-    fontSize: 20,
-    lineHeight: 28,
+    fontSize: 18,
+    lineHeight: 1.222,
     fontWeight: 700,
   },
-  title4: {
+  body1: {
     fontSize: 16,
-    lineHeight: 22,
-    fontWeight: 700,
+    lineHeight: 1.25,
   },
   body2: {
-    fontSize: 24,
-    lineHeight: 32,
-    fontWeight: 400,
+    fontSize: 14,
+    lineHeight: 1.285,
   },
   body3: {
-    fontSize: 20,
-    lineHeight: 28,
-    fontWeight: 400,
+    fontSize: 13,
+    lineHeight: 1.384,
   },
-  body4: {
-    fontSize: 16,
-    lineHeight: 22,
-    fontWeight: 400,
-  },
-  captionR: {
-    fontSize: 14,
-    lineHeight: 16,
-    fontWeight: 400,
-  },
-  captionB: {
+  caption1: {
     fontSize: 12,
-    lineHeight: 14,
-    fontWeight: 700,
+    lineHeight: 1.333,
   },
-  button: {
-    sm: {
-      fontSize: 12,
-      lineHeight: 12,
-      fontWeight: 700,
-    },
-    md: {
-      fontSize: 14,
-      lineHeight: 14,
-      fontWeight: 700,
-    },
-    lg: {
-      fontSize: 16,
-      lineHeight: 16,
-      fontWeight: 700,
-    },
+  caption2: {
+    fontSize: 11,
+    lineHeight: 1.272,
   },
 };
 
-const space = [4, 8, 12, 16, 24, 36, 48, 60, 72, 84];
+export type TypographyVariants = keyof typeof typographys;
+
+const space = {
+  0: 0,
+  2: 2,
+  4: 4,
+  6: 6,
+  8: 8,
+  10: 10,
+  12: 12,
+  14: 14,
+  16: 16,
+  18: 18,
+  20: 20,
+  24: 24,
+  28: 28,
+  30: 30,
+  36: 36,
+  40: 40,
+  60: 60,
+};
+
+const breakpoints = ['414px', '768px', '1240px'];
 
 const theme: DefaultTheme = {
   colors,
-  typographys,
   space,
+  breakpoints,
+  typographys,
 };
 
 export default theme;
