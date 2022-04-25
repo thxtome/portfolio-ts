@@ -18,8 +18,9 @@ import {
   position,
   display,
 } from 'styled-system';
+import type { LayoutProps, BorderProps, ColorProps } from 'styled-system';
 
-const Box = styled.div`
+const Box = styled.div<LayoutProps & BorderProps & ColorProps>`
   ${space}
   ${color}
   ${width}

@@ -4,8 +4,8 @@ import { TypographyVariants, ColorVariants } from '@common/style/theme';
 
 export interface TypographyProps extends React.HTMLAttributes<HTMLSpanElement | HTMLParagraphElement> {
   kind: TypographyVariants;
-  color: ColorVariants;
-  as: 'p' | 'span';
+  color?: ColorVariants;
+  as?: 'p' | 'span';
 }
 
 const TypographyRoot = styled.span<{ kind: TypographyVariants; color: ColorVariants }>`
@@ -13,7 +13,7 @@ const TypographyRoot = styled.span<{ kind: TypographyVariants; color: ColorVaria
   ${color}
 `;
 
-const Typography = ({ as, kind, color = 'black', ...props }: TypographyProps) => {
+const Typography = ({ as = 'span', kind, color = 'black', ...props }: TypographyProps) => {
   return <TypographyRoot as={as} kind={kind} color={color} {...props} />;
 };
 
