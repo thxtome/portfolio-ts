@@ -17,10 +17,21 @@ import {
   overflow,
   position,
   display,
+  zIndex,
 } from 'styled-system';
-import type { LayoutProps, BorderProps, ColorProps } from 'styled-system';
+import type { LayoutProps, BorderProps, ColorProps, ZIndexProps, PositionProps, SpaceProps } from 'styled-system';
 
-const Box = styled.div<LayoutProps & BorderProps & ColorProps>`
+import { css } from '@styled-system/css';
+import { system } from 'styled-system';
+
+const gap = css((props: any) => ({
+  gap: theme => theme.space[props.gap],
+}));
+
+const Box = styled.div<
+  LayoutProps & BorderProps & ColorProps & ZIndexProps & PositionProps & SpaceProps & { gap?: number }
+>`
+  ${zIndex}
   ${space}
   ${color}
   ${width}
@@ -38,6 +49,13 @@ const Box = styled.div<LayoutProps & BorderProps & ColorProps>`
   ${overflow}
   ${position}
   ${display}
+  box-sizing:border-box;
+  ${system({
+    gap: {
+      property: 'gap',
+      scale: 'space',
+    },
+  })}
 `;
 
 export default Box;

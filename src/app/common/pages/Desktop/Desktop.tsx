@@ -9,7 +9,7 @@ const Desktop = () => {
   console.log(processes);
 
   return (
-    <HStack>
+    <HStack width="100%" height="100%" overflow="hidden" position="relative">
       <button
         onClick={() => {
           start('profile');
