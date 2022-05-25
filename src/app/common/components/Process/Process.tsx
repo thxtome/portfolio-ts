@@ -6,6 +6,8 @@ import Navbar from '../Navbar';
 const Process = () => {
   const ref = useRef<HTMLDivElement | null>(null);
 
+  useZIndex(ref);
+
   return (
     <Box
       position="absolute"
