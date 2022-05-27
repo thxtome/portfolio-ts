@@ -34,7 +34,7 @@ const NavbarIcon = styled.div<{ variant: 'minimize' | 'maximize' | 'resize' | 'c
   background-size: cover;
 `;
 
-const Navbar = ({ processRef }: { processRef: MutableRefObject<HTMLDivElement | null> }) => {
+const  Navbar = ({ processRef }: { processRef: MutableRefObject<HTMLDivElement | null> }) => {
   const navBarRef = useRef<HTMLDivElement>(null);
 
   useDrag({ dragRef: navBarRef, targetRef: processRef });

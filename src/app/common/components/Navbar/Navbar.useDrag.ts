@@ -62,7 +62,7 @@ const useDrag = ({
       }
 
       requestAnimationFrame(() => {
-        $process.style.transform = css`translate(${x ?? 0}px, ${y ?? 0}px)`;
+        $process.style.transform = css`translate(${x}px, ${y}px)`;
       });
     };
 

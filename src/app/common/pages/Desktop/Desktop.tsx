@@ -1,12 +1,10 @@
 import HStack from '@common/components/HStack';
 import { useProcesses } from '@common/recoil/processes';
-import { ReactElement, ReactNode } from 'react';
-import { usePrograms } from '../../recoil/programs';
+import { usePrograms } from '@common/recoil/programs';
+
 const Desktop = () => {
   const { programs } = usePrograms();
   const { processes, start, stop } = useProcesses();
-  console.log(programs);
-  console.log(processes);
 
   return (
     <HStack width="100%" height="100%" overflow="hidden" position="relative">

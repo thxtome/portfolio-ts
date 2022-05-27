@@ -18,6 +18,12 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     width: 100%;
     height: 100%;
+    
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
 `;
 
