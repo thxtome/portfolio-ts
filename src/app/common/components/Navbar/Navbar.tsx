@@ -8,8 +8,11 @@ import ic_minimize from '@asset/icon/ic_minimize.png';
 import ic_maximize from '@asset/icon/ic_maximize.png';
 import ic_resize from '@asset/icon/ic_resize.png';
 import ic_close from '@asset/icon/ic_close.png';
-import { MutableRefObject, useCallback, useEffect, useRef } from 'react';
+import { MutableRefObject, useRef } from 'react';
 import useDrag from './Navbar.useDrag';
+import { useProcesses } from '../../recoil/processes';
+import { useProcess } from '../Process/Process.useProcess';
+
 const NavbarIcon = styled.div<{ variant: 'minimize' | 'maximize' | 'resize' | 'close' }>`
   width: 24px;
   height: 24px;
@@ -34,22 +37,31 @@ const NavbarIcon = styled.div<{ variant: 'minimize' | 'maximize' | 'resize' | 'c
   background-size: cover;
 `;
 
-const  Navbar = ({ processRef }: { processRef: MutableRefObject<HTMLDivElement | null> }) => {
+const Navbar = ({
+  processRef,
+  programId,
+}: {
+  processRef: MutableRefObject<HTMLDivElement | null>;
+  programId: string;
+}) => {
   const navBarRef = useRef<HTMLDivElement>(null);
+  const { status, maximize, minimize, resize, stop } = useProcess();
 
   useDrag({ dragRef: navBarRef, targetRef: processRef });
+
   return (
     <HStack width="100%" height="36px" justifyContent="space-between" minWidth="max-content" p={3} ref={navBarRef}>
-      <HStack alignItems="center">
-        <AppIcon variant="navBar" program="blog" mr={6}></AppIcon>
+      <HStack alignItems="center" gap={6}>
+        <AppIcon variant="navBar" iconId={programId as any}></AppIcon>
         <Typography kind="title2" as="p">
-          blog
+          {programId}
         </Typography>
       </HStack>
       <HStack gap={4} p={3} alignItems="center">
-        <NavbarIcon variant="minimize"></NavbarIcon>
-        <NavbarIcon variant="resize"></NavbarIcon>
-        <NavbarIcon variant="close"></NavbarIcon>
+        <NavbarIcon variant="minimize" onClick={minimize}></NavbarIcon>
+        {status === 'maximize' && <NavbarIcon variant="resize" onClick={resize}></NavbarIcon>}
+        {status === 'active' && <NavbarIcon variant="maximize" onClick={maximize}></NavbarIcon>}
+        <NavbarIcon variant="close" onClick={stop}></NavbarIcon>
       </HStack>
     </HStack>
   );

@@ -25,6 +25,13 @@ const GlobalStyle = createGlobalStyle`
     -ms-user-select: none;
     user-select: none;
   }
+
+  input:focus,
+  select:focus,
+  textarea:focus,
+  button:focus {
+    outline: none;
+  }
 `;
 
 export default GlobalStyle;

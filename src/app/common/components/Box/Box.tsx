@@ -1,3 +1,4 @@
+import * as CSS from 'csstype';
 import styled from 'styled-components';
 import {
   space,
@@ -8,28 +9,28 @@ import {
   height,
   minHeight,
   maxHeight,
-  flex,
   order,
   alignSelf,
   borders,
   borderColor,
   borderRadius,
   overflow,
+  overflowX,
+  overflowY,
   position,
   display,
   zIndex,
 } from 'styled-system';
 import type { LayoutProps, BorderProps, ColorProps, ZIndexProps, PositionProps, SpaceProps } from 'styled-system';
 
-import { css } from '@styled-system/css';
 import { system } from 'styled-system';
-
-const gap = css((props: any) => ({
-  gap: theme => theme.space[props.gap],
-}));
-
 const Box = styled.div<
-  LayoutProps & BorderProps & ColorProps & ZIndexProps & PositionProps & SpaceProps & { gap?: number }
+  Omit<LayoutProps, 'overflowY'> &
+    BorderProps &
+    ColorProps &
+    ZIndexProps &
+    PositionProps &
+    SpaceProps & { gap?: number | number[] } & { overflowY?: CSS.Property.OverflowY | 'overlay' }
 >`
   ${zIndex}
   ${space}
@@ -40,13 +41,14 @@ const Box = styled.div<
   ${height}
   ${minHeight}
   ${maxHeight}
-  ${flex}
   ${order}
   ${alignSelf}
   ${borders}
   ${borderColor}
   ${borderRadius}
   ${overflow}
+  ${overflowX}
+  ${overflowY}
   ${position}
   ${display}
   box-sizing:border-box;

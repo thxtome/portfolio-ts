@@ -1,2 +1,2 @@
-import Typography from './Program';
-export default Typography;
+import Program from './Program';
+export default Program;

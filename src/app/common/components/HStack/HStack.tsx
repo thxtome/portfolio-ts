@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { alignItems, flexWrap, justifyContent, FlexboxProps } from 'styled-system';
+import { flex, flexbox, alignItems, flexWrap, justifyContent, FlexboxProps } from 'styled-system';
 import Box from '@common/components/Box';
 
 const HStack = styled(Box)<FlexboxProps>`
@@ -8,6 +8,8 @@ const HStack = styled(Box)<FlexboxProps>`
   ${alignItems}
   ${flexWrap}
   ${justifyContent}
+  ${flex}
+  ${flexbox}
 `;
 
 export default HStack;

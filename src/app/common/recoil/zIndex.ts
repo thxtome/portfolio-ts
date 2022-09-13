@@ -1,6 +1,5 @@
 import { MutableRefObject, useEffect, useState } from 'react';
 import { atom, useRecoilState } from 'recoil';
-const css = String.raw;
 
 export const zIndexAtom = atom<() => number>({
   key: 'zIndex',
@@ -29,5 +28,5 @@ export const useZIndex = (targetRef: MutableRefObject<HTMLDivElement | null>) =>
     };
   }, []);
 
-  return useState<number>(makeZIndex());
+  return;
 };

@@ -1,9 +1,8 @@
 import { MutableRefObject, useEffect } from 'react';
 import getTranslate from '@common/helper/getTranslate';
+import { MIN_HEIGHT, MIN_WIDTH } from '../../contants/constants';
 
 const css = String.raw;
-const MIN_HEIGHT = 300;
-const MIN_WIDTH = 300;
 
 type Direction = 'n' | 's' | 'e' | 'w' | 'ne' | 'nw' | 'se' | 'sw' | null;
 
@@ -18,7 +17,7 @@ const useResize = ({
     const $outer = outerRef.current;
     const $inner = innerRef.current;
 
-    if (!$outer || !$inner) {
+    if ($outer === null || $inner === null) {
       return;
     }
 
@@ -34,9 +33,11 @@ const useResize = ({
 
     const handleEdgeLeave = () => {
       isOnEdge = false;
+
       if (isResizing) {
         return;
       }
+
       document.body.style.cursor = 'default';
     };
 
@@ -66,7 +67,7 @@ const useResize = ({
         direction = 'n';
       }
 
-      //soute
+      //south
       if (Math.abs(offsetY - height) <= 6) {
         direction = 's';
       }
@@ -115,6 +116,7 @@ const useResize = ({
 
       maxX = e.clientX + width - MIN_WIDTH - offsetX;
       maxY = e.clientY + height - MIN_HEIGHT - offsetY;
+
       isResizing = true;
     };
 
@@ -138,8 +140,8 @@ const useResize = ({
       let nextHeight: number | null = null;
       let nextWidth: number | null = null;
 
-      requestAnimationFrame(() => {
-        if (maxX === null || maxY === null) {
+      function resize() {
+        if (maxX === null || maxY === null || $outer === null) {
           return;
         }
 
@@ -151,6 +153,7 @@ const useResize = ({
             y = 0;
           }
           nextY = y;
+
           nextHeight = maxY + MIN_HEIGHT - e.clientY;
           if (nextHeight < MIN_HEIGHT) {
             nextHeight = MIN_HEIGHT;
@@ -205,7 +208,11 @@ const useResize = ({
           ${nextHeight}px
         `;
         $outer.style.transform = css`translate(${nextX}px, ${nextY}px)`;
-      });
+
+        requestAnimationFrame(resize);
+      }
+
+      requestAnimationFrame(resize);
     };
 
     const handleResizingEnd = () => {

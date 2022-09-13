@@ -88,7 +88,7 @@ const space = {
   60: 60,
 };
 
-const breakpoints = ['414px', '768px', '1240px'];
+const breakpoints = ['640px', '1008px'];
 
 const theme: DefaultTheme = {
   colors,
