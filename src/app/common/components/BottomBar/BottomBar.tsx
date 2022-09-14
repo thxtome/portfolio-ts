@@ -6,6 +6,7 @@ import Clock from '../Clock';
 import HStack from '../HStack';
 import Menu from '../Menu';
 import VStack from '../VStack';
+import { isBrowser } from 'react-device-detect';
 
 const Tab = styled(VStack)`
   width: 12px;
@@ -36,40 +37,47 @@ const BottomBar = () => {
       gap={20}
       minWidth="max-content"
     >
-      <AppIcon
-        iconId="menu"
-        variant="bottom"
-        selected={isOpenMenu}
-        onClick={() => {
-          setIsOpenMenu(isOpenMenu => !isOpenMenu);
-        }}
-      ></AppIcon>
+      {isBrowser && (
+        <AppIcon
+          iconId="menu"
+          variant="bottom"
+          selected={isOpenMenu}
+          onClick={() => {
+            setIsOpenMenu(isOpenMenu => !isOpenMenu);
+          }}
+        ></AppIcon>
+      )}
       {isOpenMenu && <Menu />}
+
       <AppIcon
         iconId="profile"
         variant="bottom"
         onClick={handleAppIconClick.bind(null, 'profile')}
         opened={processes.some(({ programId }) => programId === 'profile')}
       ></AppIcon>
+
       <AppIcon
         iconId="project"
         variant="bottom"
         onClick={handleAppIconClick.bind(null, 'project')}
         opened={processes.some(({ programId }) => programId === 'project')}
       ></AppIcon>
+
       <AppIcon
         iconId="note"
         variant="bottom"
         onClick={handleAppIconClick.bind(null, 'note')}
         opened={processes.some(({ programId }) => programId === 'note')}
       ></AppIcon>
+
       <AppIcon
         iconId="blog"
         variant="bottom"
         onClick={handleAppIconClick.bind(null, 'blog')}
         opened={processes.some(({ programId }) => programId === 'blog')}
       ></AppIcon>
-      <Clock />
+
+      {isBrowser && <Clock />}
       <Tab></Tab>
     </HStack>
   );

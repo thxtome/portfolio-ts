@@ -8,12 +8,13 @@ import { variant } from 'styled-system';
 import VStack from '@common/components/VStack';
 import { MIN_WIDTH, MIN_HEIGHT } from '@common/contants/constants';
 import useContainerQuery from '@common/hooks/useContainerQuery';
+import { isMobile } from 'react-device-detect';
 
 const Wrapper = styled(Box)<{ cursor?: string; status: string }>`
   position: absolute;
-  padding: 6px;
-  width: ${MIN_WIDTH}px;
-  height: ${MIN_HEIGHT}px;
+  padding: ${isMobile ? 0 : '6px'};
+  width: ${isMobile ? '100%' : `${MIN_WIDTH}px`};
+  height: ${isMobile ? '100%' : `${MIN_HEIGHT}px`};
 
   ${variant({
     prop: 'status',

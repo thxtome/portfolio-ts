@@ -10,8 +10,8 @@ import ic_resize from '@asset/icon/ic_resize.png';
 import ic_close from '@asset/icon/ic_close.png';
 import { MutableRefObject, useRef } from 'react';
 import useDrag from './Navbar.useDrag';
-import { useProcesses } from '../../recoil/processes';
-import { useProcess } from '../Process/Process.useProcess';
+import { useProcess } from '@common/components/Process/Process.useProcess';
+import { isBrowser } from 'react-device-detect';
 
 const NavbarIcon = styled.div<{ variant: 'minimize' | 'maximize' | 'resize' | 'close' }>`
   width: 24px;
@@ -58,9 +58,13 @@ const Navbar = ({
         </Typography>
       </HStack>
       <HStack gap={4} p={3} alignItems="center">
-        <NavbarIcon variant="minimize" onClick={minimize}></NavbarIcon>
-        {status === 'maximize' && <NavbarIcon variant="resize" onClick={resize}></NavbarIcon>}
-        {status === 'active' && <NavbarIcon variant="maximize" onClick={maximize}></NavbarIcon>}
+        {isBrowser && (
+          <>
+            <NavbarIcon variant="minimize" onClick={minimize}></NavbarIcon>
+            {status === 'maximize' && <NavbarIcon variant="resize" onClick={resize}></NavbarIcon>}
+            {status === 'active' && <NavbarIcon variant="maximize" onClick={maximize}></NavbarIcon>}
+          </>
+        )}
         <NavbarIcon variant="close" onClick={stop}></NavbarIcon>
       </HStack>
     </HStack>
