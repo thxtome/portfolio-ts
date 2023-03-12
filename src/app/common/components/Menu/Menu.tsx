@@ -15,13 +15,15 @@ const Container = styled(VStack)`
 
 const Menu = () => {
   const { start, processes } = useProcesses();
-  const [makeZIndex] = useRecoilState(zIndexAtom);
   const handleAppIconClick = (programId: string) => {
     start(programId);
   };
 
   return (
     <Container
+      onClick={e => {
+        e.stopPropagation();
+      }}
       zIndex={Number.MAX_SAFE_INTEGER}
       position="fixed"
       height="500px"

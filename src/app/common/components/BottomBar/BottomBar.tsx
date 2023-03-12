@@ -7,6 +7,7 @@ import HStack from '../HStack';
 import Menu from '../Menu';
 import VStack from '../VStack';
 import { isBrowser } from 'react-device-detect';
+import { useMenu } from '../../recoil/menu';
 
 const Tab = styled(VStack)`
   width: 12px;
@@ -19,7 +20,7 @@ const Tab = styled(VStack)`
 
 const BottomBar = () => {
   const { start, processes } = useProcesses();
-  const [isOpenMenu, setIsOpenMenu] = useState<boolean>(false);
+  const { isOpen, setIsOpen } = useMenu();
 
   const handleAppIconClick = (programId: string) => {
     start(programId);
@@ -41,13 +42,14 @@ const BottomBar = () => {
         <AppIcon
           iconId="menu"
           variant="bottom"
-          selected={isOpenMenu}
-          onClick={() => {
-            setIsOpenMenu(isOpenMenu => !isOpenMenu);
+          selected={isOpen}
+          onClickCapture={e => {
+            e.stopPropagation();
+            setIsOpen(isOpen => !isOpen);
           }}
         ></AppIcon>
       )}
-      {isOpenMenu && <Menu />}
+      {isOpen && <Menu />}
 
       <AppIcon
         iconId="profile"

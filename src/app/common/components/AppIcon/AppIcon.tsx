@@ -8,6 +8,7 @@ import ic_project from '@app/asset/icon/ic_project.png';
 import ic_note from '@app/asset/icon/ic_note.png';
 import ic_menu from '@app/asset/icon/ic_menu.png';
 import HStack from '@common/components/HStack';
+import { MouseEventHandler } from 'react';
 
 interface Props {
   selected?: boolean;
@@ -15,6 +16,7 @@ interface Props {
   variant: 'bottom' | 'menu' | 'navBar';
   iconId: 'blog' | 'profile' | 'project' | 'note' | 'menu';
   onClick?: () => void;
+  onClickCapture?: MouseEventHandler<HTMLDivElement>;
 }
 
 const selected = css({
