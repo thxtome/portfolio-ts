@@ -1,5 +1,6 @@
 //lib
 import { createRoot } from 'react-dom/client';
+import ReactGa from 'react-ga';
 
 //component
 import App from './app/App';
@@ -13,6 +14,9 @@ import NanumSquareEBWoff from '@asset/fonts/NanumSquareEB.woff';
 
 import NanumSquareRTtf from '@asset/fonts/NanumSquareR.ttf';
 import NanumSquareRWoff from '@asset/fonts/NanumSquareR.woff';
+
+const TRACKING_ID = 'G-2MWTMVYGQE';
+ReactGa.initialize(TRACKING_ID);
 
 const style = document.createElement('style');
 style.textContent = `
