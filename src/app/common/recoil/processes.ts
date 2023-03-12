@@ -16,7 +16,6 @@ const processesAtom = atom<Process[]>({
 export const useProcesses = () => {
   const [processes, setProcesses] = useRecoilState(processesAtom);
   const [makeZIndex] = useRecoilState(zIndexAtom);
-  console.log(processes);
 
   const focus = (programId: string) => {
     setProcesses(processes =>

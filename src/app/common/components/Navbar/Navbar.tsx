@@ -35,6 +35,7 @@ const NavbarIcon = styled.div<{ variant: 'minimize' | 'maximize' | 'resize' | 'c
     },
   })}
   background-size: cover;
+  cursor: pointer;
 `;
 
 const Navbar = ({
