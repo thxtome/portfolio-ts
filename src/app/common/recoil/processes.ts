@@ -16,13 +16,14 @@ const processesAtom = atom<Process[]>({
 export const useProcesses = () => {
   const [processes, setProcesses] = useRecoilState(processesAtom);
   const [makeZIndex] = useRecoilState(zIndexAtom);
+  console.log(processes);
 
   const focus = (programId: string) => {
     setProcesses(processes =>
       processes.map(process => ({
         ...process,
         zIndex: process.programId === programId ? makeZIndex() : process.zIndex,
-        status: 'active',
+        status: process.status,
       })),
     );
   };
