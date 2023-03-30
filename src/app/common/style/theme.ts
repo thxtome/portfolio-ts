@@ -49,11 +49,11 @@ const typographys = {
     lineHeight: 1.25,
   },
   body2: {
-    fontSize: 14,
+    fontSize: 15,
     lineHeight: 1.285,
   },
   body3: {
-    fontSize: 13,
+    fontSize: 14,
     lineHeight: 1.384,
   },
   caption1: {

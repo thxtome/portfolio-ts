@@ -1,4 +1,4 @@
-import { ContainerQueryContext } from '@src/app/context/containerQuery';
+import { ContainerQueryContext } from '@src/app/common/context/containerQuery';
 import { useContext, useLayoutEffect, useMemo, useRef, useState } from 'react';
 
 function inRange(width: number, range: { minWidth: number; maxWidth: number }) {

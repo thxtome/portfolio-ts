@@ -15,7 +15,7 @@ import ProFile from './profile/page/Profile';
 import Blog from './blog/page';
 import Project from './project/page';
 import Note from './note/page';
-import ContainerQueryContextProvider from './context/containerQuery';
+import ContainerQueryContextProvider from './common/context/containerQuery';
 
 const queryClient = new QueryClient({
   defaultOptions: {

@@ -10,6 +10,7 @@ import Career from '../components/Career';
 import Skill from '../components/Skill';
 import Contact from '../components/Contact';
 import Layout from '@src/app/common/components/Layout';
+import Project from '../components/Project/Project';
 
 const ProFile = () => {
   return (
@@ -28,8 +29,9 @@ const ProFile = () => {
           </Typography>
         </VStack>
         <Introduce />
-        <Career />
         <Skill />
+        <Career />
+        <Project />
         <Contact />
       </Layout>
     </Process>

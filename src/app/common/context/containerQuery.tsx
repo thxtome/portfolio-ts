@@ -1,4 +1,4 @@
-import { createContext, PropsWithChildren, useContext, useLayoutEffect, useState } from 'react';
+import { createContext, PropsWithChildren } from 'react';
 
 export const ContainerQueryContext = createContext<{ cutlines: number[] }>(null as any);
 

@@ -8,7 +8,7 @@ const GlobalStyle = createGlobalStyle`
   html {
     width:100%;
     height:100vh;
-    font-family: "NanumSquareRound";
+    font-family: "NanumSquare";
   }
 
   body
