@@ -7,12 +7,7 @@ import LogoCard from '@src/app/common/components/LogoCard/LogoCard';
 
 const projects = [
   {
-    title: '홈큐 서비스 개발',
-    description: `부동산 자산 관리, 매물 추천, 청약 알림, 전입신고 / 확정일자 신청 등 부동산 종합 서비스`,
-  },
-  {
-    title: '독큐 서비스 개발',
-    description: `부동산 공적 장부 열람 서비스`,
+    description: `개발자로 근무하면서 부동산 자산 관리 서비스 홈큐 화면 및 서버 개발과 부동산 공적 장부 열람 서비스 독큐 화면 개발을 진행했습니다.`,
   },
 ];
 
@@ -22,22 +17,15 @@ const Career = () => {
       <Typography kind="display3" as="p" pre>
         경력
       </Typography>
-      <LogoCard src={img_bigtech} title="빅테크플러스" subtitle="소프트웨어 엔지니어" desc="2020. 09. 14 ~ 재직중" />
+      <LogoCard src={img_bigtech} title="빅테크플러스" subtitle="소프트웨어 엔지니어" period="2020. 09 ~ 2023. 04" />
 
       <VStack gap={18}>
-        {projects.map((project, idx) => (
-          <>
-            <VStack gap={12}>
-              <Typography kind="title1" as="p">
-                {project.title}
-              </Typography>
-              <Typography kind="body3" as="p" pre color="grey-700">
-                {project.description}
-              </Typography>
-            </VStack>
-            {idx !== projects.length - 1 && <Line color="grey-200" />}
-          </>
-        ))}
+        <VStack gap={12}>
+          <Typography kind="body3" as="p" pre color="grey-700">
+            개발자로 근무하면서 부동산 자산 관리 서비스 홈큐 화면 및 서버 개발과 부동산 공적 장부 열람 서비스 독큐 화면 개발을 진행했습니다.
+          </Typography>
+        </VStack>
+        <Line color="grey-200" />
       </VStack>
     </Section>
   );

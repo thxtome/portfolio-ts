@@ -46,23 +46,23 @@ const typographys = {
   },
   body1: {
     fontSize: 16,
-    lineHeight: 1.25,
+    lineHeight: 1.5,
   },
   body2: {
     fontSize: 15,
-    lineHeight: 1.285,
+    lineHeight: 1.57,
   },
   body3: {
     fontSize: 14,
-    lineHeight: 1.384,
+    lineHeight: 1.768,
   },
   caption1: {
     fontSize: 12,
-    lineHeight: 1.333,
+    lineHeight: 1.666,
   },
   caption2: {
     fontSize: 11,
-    lineHeight: 1.272,
+    lineHeight: 1.544,
   },
 };
 

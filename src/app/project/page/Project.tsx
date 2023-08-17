@@ -39,12 +39,21 @@ js로 개발했던 프로젝트를 ts로 변경했고, 상태관리 툴은 redux
     type: '팀 프로젝트',
     period: '2020.04.03 ~ 07.13',
     description: `뽀모도로 기법을 이용한 타이머앱입니다.
-시간을 효율적으로 사용하지 못해 시작하게된 프로젝트입니다. 이 앱을 사용해서 집중 할 수 있는 시간을 많이 늘렸습니다.
+부족한 시간을 효율적으로 사용해보자는 생각에서 출발했습니다.
+이 앱을 사용해서 집중 할 수 있는 시간을 많이 늘렸습니다.
 작업을 만들고 완료한 개수로 통계를 내주며 등급을 부여해서 동기부여 효과를 줬습니다.
-    
-백엔드는 spring boot, 프론트는 react를 사용했습니다. 타이머는 websocket을 사용해서 안정성을 높였습니다.
-    
-pwa가 가능해서 오프라인 시에도 사용할 수 있습니다. 다만 web notification을 사용해서 알림을 줬는데 모바일 사파리에서 지원을 안해 아쉬웠던 기억이 있습니다.`,
+
+백엔드는 spring boot, 프론트는 react를 사용했습니다.
+2명에서 작업했고, 그 중 백엔드 및 프론트엔드 중 로그인과 타이머를 개발했습니다.
+
+비회원 사용자는 localStorage를 사용해 작업을 저장했고, 회원은 데이터베이스를 사용해 작업을 저장했습니다.
+
+클라이언트에서 예상치 못한 종료로 인해 저장이 안될 경우, 실패 처리를 위해 회원의 타이머가 진행될 때는 websocket을 사용했습니다.
+모바일에서 인터넷이 끊겼을 때, 백엔드에서 연결 해제가 안될 경우가 있어, 이 때 작업의 동기화가 실패했습니다.
+이를 위해 pingpong 메세지를 구현하여 일정 시간마다 메세지를 보내 응답이 없는 경우 연결이 끊김으로 간주하고 종료 처리를 해줬습니다.
+
+pwa가 가능해서 오프라인 시에도 사용할 수 있습니다.
+다만 백그라운드시에 web push를 사용해서 알림을 줬는데 모바일 사파리에서 지원을 안해 아쉬웠던 기억이 있습니다.`,
     skills: 'js, react, java, spring, mybatis, mysql',
   },
   {
@@ -54,11 +63,22 @@ pwa가 가능해서 오프라인 시에도 사용할 수 있습니다. 다만 we
     period: '2019.10.23 ~ 2020.01.18',
     description: `국비 지원 교육에서 진행한 프로젝트입니다.
 중고 물품을 실시간 온라인 경매를 통해 팔자라는 아이디어에서 시작했습니다.
-    
-웹은 spring과 jsp로 개발했습니다. 실시간 방송은 web rtc를 사용해서 구현했습니다. 
-일대다 방송을 중계하기 위해 kurento media 서버를 사용했고 시연 환경이 nat안에 있어서 turn서버를 올려서 해결했습니다.
+
+백엔드는 spring, 프론트는 jsp를 사용했습니다.
+
+5명에서 작업했고, 그 중 경매의 실시간 방송 및 채팅을 개발했습니다. 
+
+실시간 방송은 webRtc를 사용해서 구현했습니다.
+처음 webRtc를 접했을 때, 중간 서버 없이 web에서 유저와 유저 P2P 연결을 통해 스트리밍을 하는 것에 매력을 느꼈습니다.
+목표는 1:40의 실시간 방송이였는데, P2P방식으로는 클라이언트에 많은 부담이 가서 어쩔 수 없이 중간에 쿠렌토 미디어 서버를 설치했습니다.
+또한 시연 환경이 같은 NAT 안에 있어서 TURN 서버를 설치해 해결했습니다.
+
+실시간 채팅은 websocket을 사용해서 구현했습니다.
+닉네임이 없는 사용자를 구분하기위해 입장시 임의의 색을 결정해 사용자의 채팅에 색을 입혀 구분했습니다.
+ 
 공식 문서를 읽어가면서 이슈를 하나씩 해결했던 좋은 경험이였습니다.`,
-    skills: 'js, react, java, spring, mybatis, mysql',
+    href: 'https://www.youtube.com/watch?v=j1gPvZifyS0',
+    skills: 'js, java, spring, mybatis, mysql',
   },
 ];
 
@@ -74,6 +94,7 @@ const Project = () => {
             개인 또는 팀으로 진행했던 사이드 프로젝트들 입니다.
           </Typography>
         </VStack>
+
         {projects.map(project => (
           <Section>
             <HStack gap={20}>
@@ -94,6 +115,13 @@ const Project = () => {
               <Typography kind="body3" as="p" pre>
                 {project.description}
               </Typography>
+              {project.href && (<>
+                <a href={project.href} target='_blank'>
+                  <Typography kind="body3" as="p" color="grey-700">
+                    링크
+                  </Typography>
+                </a>
+              </>)}
               <Typography kind="body3" as="p" color="grey-700">
                 기술 스택
               </Typography>

@@ -24,15 +24,12 @@ const ProFile = () => {
           <Typography kind="title1" as="p">
             PARK JONG HOON
           </Typography>
-          <Typography kind="body3" as="p" color="grey-700">
-            주니어 소프트웨어 엔지니어
-          </Typography>
         </VStack>
-        <Introduce />
-        <Skill />
-        <Career />
-        <Project />
         <Contact />
+        <Project />
+        <Career />
+        <Skill />
+        <Introduce />
       </Layout>
     </Process>
   );

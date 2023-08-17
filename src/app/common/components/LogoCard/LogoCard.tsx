@@ -7,10 +7,10 @@ interface Props {
   src: string;
   title: string;
   subtitle: string;
-  desc: string;
+  period: string;
 }
 
-const LogoCard = ({ src, title, subtitle, desc }: Props) => {
+const LogoCard = ({ src, title, subtitle, period }: Props) => {
   return (
     <HStack gap={20}>
       <Img width={140} height={140} src={src}></Img>
@@ -22,7 +22,7 @@ const LogoCard = ({ src, title, subtitle, desc }: Props) => {
           {subtitle}
         </Typography>
         <Typography kind="body3" as="p" color="grey-700">
-          {desc}
+          {period}
         </Typography>
       </VStack>
     </HStack>
